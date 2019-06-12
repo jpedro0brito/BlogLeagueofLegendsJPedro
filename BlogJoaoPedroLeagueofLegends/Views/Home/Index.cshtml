@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BlogJoaoPedroLeagueofLegends.ViewModel.PostsViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+    int cont = 0;
+}
+<aside>
+    @foreach (var posts in Model)
+    {
+        if (cont <= 4)
+        {
+            <aside class="item">
+                <img src="" alt="">
+                <h2>@posts.Titulo</h2>
+                <div>
+                    <p>
+                        @posts.Post
+                    </p>
+                </div>
+                <a href="/Posts/Post/@posts.PostId">Ler</a>
+            </aside>
+        }
+        cont++;
+    }
+</aside>

@@ -1,0 +1,25 @@
+﻿@model BlogJoaoPedroLeagueofLegends.ViewModel.PostsViewModel
+@{
+    ViewData["Title"] = "Alterar";
+}
+
+<h2>Alterar</h2>
+
+<h2 class="h2 text-center">Alterar</h2>
+<div class="row">
+    <div class="col-md-offset-3 col-md-4">
+        <form class="form-group">
+            <label for="Titulo"></label>
+            <input type="text" name="Titulo" class="form-control" hidden />
+            <label for="SubTitulo"></label>
+            <input type="text" name="SubTitulo" class="form-control" hidden />
+            <label for="Post"></label>
+            <textarea id="Post" name="Post" rows="5" cols="33" class="form-control"></textarea>
+            <a href="Posts/Listar" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove"> Voltar</span></a>
+            <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-check"> Salvar</span></button>
+        </form>
+    </div>
+</div>
+
+
+

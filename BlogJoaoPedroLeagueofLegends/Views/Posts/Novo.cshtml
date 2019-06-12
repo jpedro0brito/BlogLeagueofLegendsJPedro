@@ -1,0 +1,23 @@
+﻿@model BlogJoaoPedroLeagueofLegends.ViewModel.PostsViewModel
+@{
+    ViewData["Title"] = "Novo";
+}
+<section class="maiginEndBoot">
+    <h2 class="h2 text-center">Novo</h2>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <form asp-action="Novo" class="form-group">
+                <label for="Titulo">Titulo</label>
+                <input type="text" name="Titulo" class="form-control" />
+                <label for="SubTitulo">SubTitulo</label>
+                <input type="text" name="SubTitulo" class="form-control" />
+                @Html.Label("Descricao") <br />
+                @Html.DropDownList("CategoriaList", "Selecione uma Categoria") <br />
+                <label for="Post">Post</label>
+                <textarea id="Post" name="Post" rows="5" cols="33" class="form-control"></textarea>
+                <a href="/Posts/Listar" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove"> Voltar</span></a>
+                <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-check"> Salvar</span></button>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+﻿@model  IEnumerable<BlogJoaoPedroLeagueofLegends.ViewModel.CategoriaViewModel>
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<aside class="item lista">
+    <ul>
+        @foreach (var categoria in Model)
+        {
+            <li>
+                <a href="/Posts/Post/@categoria.CategoriaId">@categoria.Descricao</a>
+            </li>
+        }
+    </ul>
+</aside>
+<aside>
+    @foreach (var posts in ViewBag.PostList)
+    {
+        for (int i = 0; i <= 4; i++)
+        {
+            <aside class="item">
+                <img src="" alt="">
+                <h2>@posts.Titulo</h2>
+                <div class="pontText">
+                    <p>
+                        @posts.Post
+                    </p>
+                </div>
+                <a href="/Posts/Post/@posts.PostId">Ler</a>
+            </aside>
+        }
+    }
+</aside>

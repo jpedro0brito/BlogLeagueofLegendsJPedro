@@ -1,0 +1,34 @@
+﻿@model BlogJoaoPedroLeagueofLegends.ViewModel.PostsViewModel
+@{
+    ViewData["Title"] = "Post";
+}
+
+<aside class="item lista">
+    <ul>
+        @foreach (var post in ViewBag.CategoriaList.Posts)
+        {
+            <li>
+                <a href="/Posts/Post/@post.PostId">@post.Titulo</a>
+            </li>
+        }
+    </ul>
+</aside>
+<section class="item">
+    <div>
+        <div class="postsTexto">
+            <h2>@Model.Titulo</h2>
+            <h3>@Model.SubTitulo</h3>
+            <p>
+                @Model.Post
+            </p>
+        </div>
+    </div>
+</section>
+<aside class="item lista">
+    <ul>
+        <li>
+            <a href="listar.html">Listar Posts</a>
+        </li>
+    </ul>
+</aside>
+
