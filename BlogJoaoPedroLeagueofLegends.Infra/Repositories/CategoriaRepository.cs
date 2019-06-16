@@ -17,12 +17,12 @@ namespace BlogJoaoPedroLeagueofLegends.Infra.Repositories
 
         public async Task<IEnumerable<Categoria>> GetByAll()
         {
-            return await context.Categorias.ToListAsync();
+            return await context.Categorias.Include(p => p.Posts).ToListAsync();
         }
 
         public async Task<Categoria> GetById(int id)
         {
-            return await context.Categorias.FirstOrDefaultAsync(p => p.CategoriaId == id);
+            return await context.Categorias.Include(p => p.Posts).FirstOrDefaultAsync(p => p.CategoriaId == id);
         }
     }
 }

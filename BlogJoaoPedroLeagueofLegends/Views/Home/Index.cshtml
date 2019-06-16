@@ -6,17 +6,17 @@
 <aside>
     @foreach (var posts in Model)
     {
-        if (cont <= 4)
+        if (cont <= 5)
         {
             <aside class="item">
-                <img src="" alt="">
+                <img src="@posts.ImgPost" alt="Resultado de imagem para imagem LeagueofLegends" />
                 <h2>@posts.Titulo</h2>
                 <div>
                     <p>
-                        @posts.Post
+                        @posts.PreviaTexto
                     </p>
                 </div>
-                <a href="/Posts/Post/@posts.PostId">Ler</a>
+                <a href="/Posts/Post/@posts.PostId">Ler mais.</a>
             </aside>
         }
         cont++;

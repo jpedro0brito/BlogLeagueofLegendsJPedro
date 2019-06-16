@@ -3,23 +3,43 @@
     ViewData["Title"] = "Excluir";
 }
 
-<h2>Excluir</h2>
-
-<h2 class="h2 text-center">Excluir</h2>
-<div class="row">
-    <div class="col-md-offset-3 col-md-4">
-        <form class="form-group">
-            <label for="Titulo"></label>
-            <input type="text" name="Titulo" class="form-control" hidden/>
-            <label for="SubTitulo"></label>
-            <input type="text" name="SubTitulo" class="form-control" hidden/>
-            <label for="Post"></label>
-            <textarea id="Post" name="Post" rows="5" cols="33" class="form-control"></textarea>
-            <a href="Posts/Listar" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-remove"> Voltar</span></a>
-            <button class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-check"> Salvar</span></button>
-        </form>
+<section class="maiginEndBoot">
+    <h2 class="h2 text-center">Excluir</h2>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <form asp-action="Excluir" class="form-group">
+                <input type="hidden" name="PostId" value="@Model.PostId" />
+                <label for="Titulo">Titulo</label>
+                <input type="text" name="Titulo" class="form-control" value="@Model.Titulo" disabled />
+                <label for="SubTitulo">SubTitulo</label>
+                <input type="text" name="SubTitulo" class="form-control" value="@Model.SubTitulo" disabled />
+                <label for="PreviaTexto">Previa do Texto</label>
+                <input type="text" name="PreviaTexto" class="form-control" value="@Model.PreviaTexto" disabled />
+                <label for="ImgPost">Imagem do Post</label>
+                <input type="text" name="ImgPost" class="form-control" value="@Model.ImgPost" disabled />
+                <label for="Categoria">Categoria</label><br />
+                <input type="text" name="Categoria" value="@Model.Categoria.descricao" disabled /><br />
+                <label for="Post">Post</label> <br />
+                <hr />
+                <div name="Post">@Html.Raw(Model.Post)</div>
+                <hr />
+                <a href="/Posts/Listar" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove"> Voltar</span></a>
+                <button type="submit" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"> Excluir</span></button>
+            </form>
+        </div>
     </div>
-</div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/summernote/dist/summernote.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote();
+        });
+    </script>
+}
 
 
 

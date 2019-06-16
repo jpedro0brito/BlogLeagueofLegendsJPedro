@@ -19,10 +19,16 @@ namespace BlogJoaoPedroLeagueofLegends.ViewModel
         [Display(Name = "Sub Titulo")]
         [Range(10, 100, ErrorMessage = "A Quatidade devera ser entre 10 e 100")]
         public string SubTitulo { get; set; }
-        [Required(ErrorMessage ="Digite um texto.")]
+        [Required(ErrorMessage = "Digite um texto.")]
         [Range(10, 500, ErrorMessage = "A Quatidade devera ser entre 10 e 500")]
+        [Display(Name = "Digite uma Previa do Texto")]
+        public string PreviaTexto { get; set; }
+        [Required(ErrorMessage ="Digite um texto.")]
         [Display(Name = "Digite um Texto")]
         public string Post { get; set; }
+        [Required(ErrorMessage = "Selecione um Imagem via URL")]
+        [Display(Name = "Imagem do Icone do Post")]
+        public string ImgPost { get; set; }
         [Required(ErrorMessage = "Selecione um Item")]
         [Display(Name = "Categoria")]
         public Categoria Categoria { get; set; }

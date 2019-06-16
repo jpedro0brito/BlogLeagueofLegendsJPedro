@@ -1,34 +1,42 @@
 ﻿@model BlogJoaoPedroLeagueofLegends.ViewModel.PostsViewModel
 @{
     ViewData["Title"] = "Post";
+    int cont = 0;
 }
 
-<aside class="item lista">
-    <ul>
-        @foreach (var post in ViewBag.CategoriaList.Posts)
-        {
-            <li>
-                <a href="/Posts/Post/@post.PostId">@post.Titulo</a>
-            </li>
-        }
-    </ul>
-</aside>
-<section class="item">
-    <div>
-        <div class="postsTexto">
-            <h2>@Model.Titulo</h2>
-            <h3>@Model.SubTitulo</h3>
-            <p>
-                @Model.Post
-            </p>
+<section>
+    <div class="tabela">
+        <div class="contatoText item">
+            <h1 class="item">@Model.Titulo</h1>
+            <h2 class="item">@Model.SubTitulo</h2>
+            <div class="TextoSize item">
+                @Html.Raw(Model.Post)
+            </div>
         </div>
+        <aside class="listaItemCon item tabela">
+            <ul>
+                @foreach (var posts in ViewBag.PostsCategoria)
+                {
+                    if (cont <= 2 & posts.PostId != Model.PostId)
+                    {
+                        <li>
+                            <aside class="item">
+                                <h3>@posts.Categoria.descricao</h3>
+                                <img src="@Model.ImgPost" alt="Resultado de imagem para imagem LeagueofLegends" />
+                                <h2>@posts.Titulo</h2>
+                                <div>
+                                    <p>
+                                        @posts.PreviaTexto
+                                    </p>
+                                </div>
+                                <a href="/Posts/Post/@posts.PostId">Ler mais.</a>
+                            </aside>
+                        </li>
+                    }
+                    cont++;
+                }
+            </ul>
+        </aside>
     </div>
 </section>
-<aside class="item lista">
-    <ul>
-        <li>
-            <a href="listar.html">Listar Posts</a>
-        </li>
-    </ul>
-</aside>
 

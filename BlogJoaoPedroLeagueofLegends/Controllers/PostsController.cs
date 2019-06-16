@@ -27,7 +27,9 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
             var buscaPost = await postsServices.BuscaPorId(id);
             var post = Mapper.Map<Posts, PostsViewModel>(buscaPost);
 
-            ViewBag.CategoriaList = await categoriaServices.BuscaPorId(buscaPost.Categoria.CategoriaId);
+            var categoria = await categoriaServices.BuscaPorId(buscaPost.Categoria.CategoriaId);
+            categoria.Posts.Where(p => p.PreviaTexto.Length > 200).ToList().ForEach(p => p.PreviaTexto = p.PreviaTexto.Substring(0, 200) + " ....");
+            ViewBag.PostsCategoria = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(categoria.Posts);
             return View(post);
         }
 
@@ -54,6 +56,41 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
             }
             else
                 return View(posts);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Alterar(int id)
+        {
+            var buscaPost = await postsServices.BuscaPorId(id);
+            var mapPost = Mapper.Map<Posts, PostsViewModel>(buscaPost);
+            var buscaCategoria = await categoriaServices.BuscaPorTudo();
+            ViewBag.CategoriaList = new SelectList(buscaCategoria, "CategoriaId", "descricao", buscaPost.Categoria.CategoriaId);
+            return View(mapPost);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Alterar(Posts posts, int CategoriaList)
+        {
+            if (ModelState.IsValid)
+            {
+                posts.Categoria = await categoriaServices.BuscaPorId(Convert.ToInt32(CategoriaList));
+                postsServices.Alterar(posts);
+                return RedirectToAction(nameof(Listar));
+            }
+            return View(posts);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            var buscaPost = await postsServices.BuscaPorId(id);
+            var mapPost = Mapper.Map<Posts, PostsViewModel>(buscaPost);
+            var buscaCategoria = await categoriaServices.BuscaPorTudo();
+            ViewBag.CategoriaList = new SelectList(buscaCategoria, "CategoriaId", "descricao", buscaPost.Categoria.CategoriaId);
+            return View(mapPost);
+        }
+        [HttpPost]
+        public IActionResult Excluir(Posts posts)
+        {
+            postsServices.Excluir(posts);
+            return RedirectToAction(nameof(Listar));
         }
     }
 }

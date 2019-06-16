@@ -1,5 +1,6 @@
 ﻿using BlogJoaoPedroLeagueofLegends.DoMain.Interfaces;
 using BlogJoaoPedroLeagueofLegends.Infra.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace BlogJoaoPedroLeagueofLegends.Infra.Repositories
         public void Delete(TEntity obj)
         {
             context.Set<TEntity>().Remove(obj);
+            context.SaveChanges();
         }
 
         public void Dispose()
@@ -30,11 +32,13 @@ namespace BlogJoaoPedroLeagueofLegends.Infra.Repositories
         public void Insert(TEntity obj)
         {
             context.Set<TEntity>().Add(obj);
+            context.SaveChanges();
         }
 
         public void Update(TEntity obj)
         {
-            context.Set<TEntity>().Update(obj);
+            context.Entry(obj).State = EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }

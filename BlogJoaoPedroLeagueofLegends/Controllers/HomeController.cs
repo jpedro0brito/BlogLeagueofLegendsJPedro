@@ -22,12 +22,15 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
         public IActionResult Index()
         {
             var posts = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(postsSevices.BuscaPorTudo());
+            posts.Where(p => p.PreviaTexto.Length > 200).ToList().ForEach(p => p.PreviaTexto = p.PreviaTexto.Substring(0, 200) + " ....");
             return View(posts);
         }
 
         public IActionResult Contatos()
         {
-            return View();
+            var posts = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(postsSevices.BuscaPorTudo());
+            posts.Where(p => p.PreviaTexto.Length > 200).ToList().ForEach(p => p.PreviaTexto = p.PreviaTexto.Substring(0, 200) + " ....");
+            return View(posts);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

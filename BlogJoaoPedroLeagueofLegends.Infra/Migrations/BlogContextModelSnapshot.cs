@@ -41,8 +41,12 @@ namespace BlogJoaoPedroLeagueofLegends.Infra.Migrations
 
                     b.Property<int?>("CategoriaId");
 
+                    b.Property<string>("ImgPost");
+
                     b.Property<string>("Post")
-                        .HasMaxLength(500);
+                        .HasColumnType("text");
+
+                    b.Property<string>("PreviaTexto");
 
                     b.Property<string>("SubTitulo")
                         .HasMaxLength(100);

@@ -28,6 +28,7 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
                 var buscaPost = categorias.FirstOrDefault();
                 if (buscaPost != null)
                 {
+                    buscaPost.Posts.Where(p => p.PreviaTexto.Length > 200).ToList().ForEach(p => p.PreviaTexto = p.PreviaTexto.Substring(0, 200) + " ....");
                     var post = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(buscaPost.Posts);
                     ViewBag.PostList = post;
                 }
@@ -35,6 +36,7 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
             else
             {
                 var buscaPost = await categoriaServices.BuscaPorId(Convert.ToInt32(id));
+                buscaPost.Posts.Where(p => p.PreviaTexto.Length > 200).ToList().ForEach(p => p.PreviaTexto = p.PreviaTexto.Substring(0, 200) + " ....");
                 var post = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(buscaPost.Posts);
 
                 ViewBag.PostList = post;

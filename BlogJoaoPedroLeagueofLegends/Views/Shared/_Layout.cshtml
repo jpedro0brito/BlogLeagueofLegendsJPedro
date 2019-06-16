@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Blog JoaoPedro LeagueofLegends</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/style.css">
+        <link rel="stylesheet" href="~/lib/summernote/dist/summernote.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -19,7 +19,10 @@
 </head>
 <body>
     <header>
-        <h1>Blog do JP</h1>
+        <div class="logolol">
+            <img src="https://br.leagueoflegends.com/profiles/lol2_profile/themes/custom/lolt/img/lol_logo.png" alt="Alternate Text" />  
+        </div>
+        <h1>Blog | LeagueofLegends | JPedro</h1>
     </header>
     <nav>
         <ul>
@@ -41,7 +44,35 @@
         @RenderBody()
     </main>
     <footer>
-        <h3>Fim do blog</h3>
+        <ul>
+            <li>
+                <h3>Fim do blog</h3>
+            </li>
+            <li>
+                <ul class="listaNo">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Categoria" asp-action="Categorias">Categoria</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Posts" asp-action="Listar">Listas de Posts ADM</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Contatos">Contato</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="textFooter">
+                    <h3>Nome: João Pedro Rocha Brito</h3>
+                    <h3>Professor: Janderson Thomaz</h3>
+                    <h3>Faculdade: UNIRON</h3>
+                    <h3>Disiplina: Programação para Web</h3>
+                </div>
+            </li>
+        </ul>
     </footer>
 
     <environment include="Development">

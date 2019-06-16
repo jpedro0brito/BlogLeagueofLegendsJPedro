@@ -1,9 +1,10 @@
 ﻿@model  IEnumerable<BlogJoaoPedroLeagueofLegends.ViewModel.CategoriaViewModel>
 @{
     ViewData["Title"] = "Categorias";
+    int cont = 0;
 }
 
-<aside class="item lista">
+<nav>
     <ul>
         @foreach (var categoria in Model)
         {
@@ -12,22 +13,23 @@
             </li>
         }
     </ul>
-</aside>
+</nav>
 <aside>
     @foreach (var posts in ViewBag.PostList)
     {
-        for (int i = 0; i <= 4; i++)
+        if (cont <= 5)
         {
             <aside class="item">
-                <img src="" alt="">
+                <img src="@posts.ImgPost" alt="Resultado de imagem para imagem LeagueofLegends" />
                 <h2>@posts.Titulo</h2>
-                <div class="pontText">
+                <div>
                     <p>
-                        @posts.Post
+                        @posts.PreviaTexto
                     </p>
                 </div>
-                <a href="/Posts/Post/@posts.PostId">Ler</a>
+                <a href="/Posts/Post/@posts.PostId">Ler mais.</a>
             </aside>
         }
+        cont++;
     }
 </aside>

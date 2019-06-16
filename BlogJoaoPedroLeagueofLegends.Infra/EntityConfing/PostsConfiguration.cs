@@ -13,7 +13,7 @@ namespace BlogJoaoPedroLeagueofLegends.Infra.EntityConfing
         public void Configure(EntityTypeBuilder<Posts> builder)
         {
             builder.HasKey(p => p.PostId);
-            builder.Property(p => p.Post).HasMaxLength(500);
+            builder.Property(p => p.Post).HasColumnType("text");
             builder.Property(p => p.Titulo).HasMaxLength(100);
             builder.Property(p => p.SubTitulo).HasMaxLength(100);
         }

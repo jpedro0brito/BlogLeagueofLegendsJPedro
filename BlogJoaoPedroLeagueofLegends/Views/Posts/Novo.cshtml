@@ -5,19 +5,34 @@
 <section class="maiginEndBoot">
     <h2 class="h2 text-center">Novo</h2>
     <div class="row">
-        <div class="col-md-offset-4 col-md-4">
+        <div class="col-md-offset-2 col-md-8">
             <form asp-action="Novo" class="form-group">
                 <label for="Titulo">Titulo</label>
                 <input type="text" name="Titulo" class="form-control" />
                 <label for="SubTitulo">SubTitulo</label>
                 <input type="text" name="SubTitulo" class="form-control" />
+                <label for="PreviaTexto">Previa do Texto</label>
+                <input type="text" name="PreviaTexto" class="form-control" />
+                <label for="ImgPost">Imagem do Post</label>
+                <input type="text" name="ImgPost" class="form-control" />
                 @Html.Label("Descricao") <br />
                 @Html.DropDownList("CategoriaList", "Selecione uma Categoria") <br />
                 <label for="Post">Post</label>
-                <textarea id="Post" name="Post" rows="5" cols="33" class="form-control"></textarea>
+                <textarea id="summernote" name="Post" class="form-control"></textarea>
                 <a href="/Posts/Listar" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove"> Voltar</span></a>
                 <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-check"> Salvar</span></button>
             </form>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/summernote/dist/summernote.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote();
+        });
+    </script>
+}
