@@ -43,5 +43,58 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
             }
             return View(categotiaTRUE);
         }
+        [HttpGet]
+        public async Task<IActionResult> Listar()
+        {
+            var categoria = await categoriaServices.BuscaPorTudo();
+            var categoriaView = Mapper.Map<IEnumerable<Categoria>, IEnumerable<CategoriaViewModel>>(categoria);
+            return View(categoriaView);
+        }
+        [HttpGet]
+        public IActionResult Novo()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Novo(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                categoriaServices.Salvar(categoria);
+                return RedirectToAction(nameof(Listar));
+            }
+            else
+                return View(categoria);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Alterar(int id)
+        {
+            var categoria = await categoriaServices.BuscaPorId(id);
+            var categoriaView = Mapper.Map<Categoria, CategoriaViewModel>(categoria);
+            return View(categoriaView);
+        }
+        [HttpPost]
+        public IActionResult Alterar(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                categoriaServices.Alterar(categoria);
+                return RedirectToAction(nameof(Listar));
+            }
+            return View(categoria);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            var categoria = await categoriaServices.BuscaPorId(id);
+            var categoriaView = Mapper.Map<Categoria, CategoriaViewModel>(categoria);
+            return View(categoriaView);
+        }
+        [HttpPost]
+        public IActionResult Excluir(Categoria categoria)
+        {
+            categoriaServices.Excluir(categoria);
+            return RedirectToAction(nameof(Listar));
+        }
     }
 }

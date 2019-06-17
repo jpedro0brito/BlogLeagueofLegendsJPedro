@@ -3,16 +3,22 @@
     ViewData["Title"] = "Listar";
 }
 <section class="maiginEndBoot">
-    <h2 class="text-center h2">Listar</h2>
+    <h2 class="text-center h2">Listar Posts</h2>
 
-    <div>
-        <a href="/Posts/Novo" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"> Novo</span></a>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="/Posts/Novo" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"> Novo</span></a>
+        </div>
+        <div class="col-md-offset-7 col-md-1">
+            <a href="/ADM/Menu" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-apple"> Menu</span></a>
+        </div>
     </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Titulo</th>
                 <th>Sub Titulo</th>
+                <th>Categoria</th>
                 <th>Posts</th>
                 <th></th>
             </tr>
@@ -23,9 +29,10 @@
                 <tr>
                     <td>@item.Titulo</td>
                     <td>@item.SubTitulo</td>
+                    <td>@item.Categoria.descricao</td>
                     <td><a href="/Posts/Post/@item.PostId">Link do Posts</a></td>
-                    <td><a href="/Posts/Alterar/@item.PostId" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-edit"> Alterar</span></a>
-                    <a href="/Posts/Excluir/@item.PostId" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"> Excluir</span></a></td>
+                    <td><a href="/Posts/Alterar/@item.PostId" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="/Posts/Excluir/@item.PostId" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
             }
         </tbody>

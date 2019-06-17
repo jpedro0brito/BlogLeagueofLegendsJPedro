@@ -1,0 +1,20 @@
+﻿@model BlogJoaoPedroLeagueofLegends.ViewModel.CategoriaViewModel
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<section class="maiginEndBoot">
+    <h2 class="h2 text-center">Excluir</h2>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <form asp-action="Excluir" class="form-group">
+                <input type="hidden" name="CategoriaId" value="@Model.CategoriaId" />
+                <label for="Descricao">Descrição</label>
+                <input type="text" name="Descricao" class="form-control" value="@Model.Descricao" disabled/>
+                <a href="/Categoria/Listar" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove"> Voltar</span></a>
+                <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-check"> Salvar</span></button>
+            </form>
+        </div>
+    </div>
+</section>
+

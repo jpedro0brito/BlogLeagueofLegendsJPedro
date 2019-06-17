@@ -98,13 +98,14 @@ aside.item.lista {
 }
 
 footer ul {
-    float: left
+    text-align: center;
+    margin-top: 10px;
 }
 
 footer li {
     display: inline-block;
     border-left: 1px solid #e2e2e2;
-
+    padding-right: 5px;
 }
 .textFooter > h3{
     font-size: 1em;
@@ -193,7 +194,7 @@ section, aside, nav, footer {
     aside .item{
         padding: 10px 20px;
         float: left;
-        width: 18%;
+        width: 30%;
         margin: 5px;
         border: 2px solid black;
     }

@@ -22,6 +22,7 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
             this.postsServices = postsServices;
             this.categoriaServices = categoriaServices;
         }
+        [HttpGet]
         public async Task<IActionResult> Post(int id)
         {
             var buscaPost = await postsServices.BuscaPorId(id);
@@ -32,12 +33,13 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
             ViewBag.PostsCategoria = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(categoria.Posts);
             return View(post);
         }
-
+        [HttpGet]
         public IActionResult Listar()
         {
             var posts = Mapper.Map<IEnumerable<Posts>, IEnumerable<PostsViewModel>>(postsServices.BuscaPorTudo());
             return View(posts);
         }
+        [HttpGet]
         public async Task<IActionResult> Novo()
         {
             var buscaCategoria = await categoriaServices.BuscaPorTudo();
@@ -52,7 +54,7 @@ namespace BlogJoaoPedroLeagueofLegends.Controllers
                 var item = ViewBag.CategoriaList;
                 posts.Categoria = await categoriaServices.BuscaPorId(Convert.ToInt32(CategoriaList));
                 postsServices.Salvar(posts);
-                return RedirectToAction("Listar");
+                return RedirectToAction(nameof(Listar));
             }
             else
                 return View(posts);
