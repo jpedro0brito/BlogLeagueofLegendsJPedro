@@ -56,14 +56,6 @@ namespace BlogJoaoPedroLeagueofLegends
             services.AddTransient<IPostsRepository, PostsRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
-            //var mappingConfig = new MapperConfiguration(mc =>
-            //{
-            //    mc.AddProfile(new MappingProfile());
-            //});
-
-            //IMapper mapper = mappingConfig.CreateMapper();
-            //services.AddSingleton(mapper);
-
             MapConfiguration.RegisterMapProfile();
         }
 

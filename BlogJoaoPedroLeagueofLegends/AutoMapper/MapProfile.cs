@@ -14,6 +14,7 @@ namespace BlogJoaoPedroLeagueofLegends.AutoMapper
         {
             // Core
             CreateMap<Posts, PostsViewModel>().ReverseMap();
+            CreateMap<Categoria, CategoriaViewModel>().ReverseMap();
         }
     }
 }
