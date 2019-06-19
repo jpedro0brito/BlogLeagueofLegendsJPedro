@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BlogJoaoPedroLeagueofLegends.ViewModel.CategoriaViewModel>
+
+
+<nav>
+    <ul>
+        <li>
+            <a asp-controller="Home" asp-action="Index" class="menu">Home</a>
+        </li>
+        <li class="dropdownlista">
+            <a href="#" class="menu dropdown">Categoria</a>
+            <div class="dropdown-content">
+                @foreach (var categoria in Model)
+                {
+                    <a href="/Categoria/Categorias/@categoria.CategoriaId" class="menu">@categoria.Descricao</a>
+                }
+            </div>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="Contatos" class="menu">Contato</a>
+        </li>
+    </ul>
+</nav>
