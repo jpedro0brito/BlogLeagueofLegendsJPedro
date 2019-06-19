@@ -12,9 +12,6 @@ html, body{
     height: 100%;
 }
 ul {
-    margin-top: 5px !important;
-    margin-bottom: 5px;
-    margin-left: 10px;
     list-style-type: none;
 }
 
@@ -49,6 +46,9 @@ nav {
 }
 
 nav ul {
+    margin-top: 5px !important;
+    margin-bottom: 5px;
+    margin-left: 10px;
     float: left;
 }
 
@@ -57,7 +57,7 @@ nav li {
     display: inline-block;
 }
 
-nav > ul > li > a, .dropdown {
+nav > ul > li > a, .dropbtn {
     display: block;
     text-decoration: none;
     color: #055492;
@@ -66,46 +66,46 @@ nav > ul > li > a, .dropdown {
     border: 2px solid transparent;
 }
 
-nav > ul > li > a.activeJP {
+nav > ul > li > a.activeJP, .dropdown > menu.dropbtn.activeJP, .dropdown-content a.activeJP {
     color: white;
     text-decoration: none;
     background-color: #055492;
     border: 2px solid;
 }
 
-nav > ul > li > a:hover:not(.activeJP), .dropdownlista:hover .dropdown {
+nav > ul > li > a:hover:not(.activeJP), .dropdown > menu.dropbtn:hover:not(.activeJP), .dropdown-content a:hover:not(.activeJP) {
     color: white;
     text-decoration: none;
     background-color: cornflowerblue;
     border: 2px solid;
 }
 
-li.dropdownlista {
-    display: inline-block;
+li.dropdown {
+  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: aliceblue;
   min-width: 160px;
+  border-radius: 6px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  
 }
 
 .dropdown-content a {
-  color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
-}
+  border-radius: 6px;
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 
 .item > a{
     background-color: dodgerblue;
@@ -179,7 +179,6 @@ section {
     float: left;
     width: 50%;
     margin: 5px;
-    /*word-break: break-word;*/
 }
 .postsCentro{
     margin: 1%;
@@ -189,7 +188,6 @@ section {
 }
 section .contatoText {
     padding: 4% 4% 4% 8%;
-    /*word-break: break-word;*/
 }
 .item.categoria{
     margin-left: 10%;
@@ -261,7 +259,6 @@ section, aside, nav, footer {
         padding: 10px 20px;
         width: auto;
         margin: 5px;
-        /*word-break: break-word;*/
     }
 
     aside.item.lista li {
@@ -284,6 +281,7 @@ section, aside, nav, footer {
     footer li {
         padding-right: 0px;
     }
+
 }
 @media screen and (max-width: 800px){
     aside .item{
@@ -295,5 +293,21 @@ section, aside, nav, footer {
     }
     .listaItemCon .item {
         width: auto;
+    }
+    footer ul {
+        text-align: start;
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    header > h1 {
+        font-size: 25px;
+    }
+    header > .logolol{
+        width: auto;
+        float: none;
+    }
+    .TextoSize > p {
+        clear: both;
+        font-size: medium;
     }
 }
